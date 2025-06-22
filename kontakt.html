@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kontaktformular – Los Santos Government</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <img src="assets/img/logo.png" alt="Logo" class="logo" />
+      <h1>Government</h1>
+      <a href="login.html" class="login-btn">Login</a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="https://theneco19.github.io/tc_page/" class="btn">Homepage</a></li>
+        <li><a href="index.html">Government-Startseite</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="kontakt.html" class="active">Kontakt Formular</a></li>
+        <li><a href="team.html">Über uns</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2>Schreibe eine Nachricht</h2>
+    <form id="contactForm">
+      <label for="name">Name (IC):</label>
+      <input type="text" id="name" required />
+
+      <label for="betreff">Betreff:</label>
+      <input type="text" id="betreff" required />
+
+      <label for="nachricht">Nachricht:</label>
+      <textarea id="nachricht" required></textarea>
+
+      <button type="submit" class="btn-primary">Absenden</button>
+    </form>
+
+    <p id="feedback" style="margin-top:1em;"></p>
+  </main>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const betreff = document.getElementById("betreff").value;
+      const nachricht = document.getElementById("nachricht").value;
+
+      const eintrag = {
+        name,
+        betreff,
+        nachricht,
+        datum: new Date().toLocaleString()
+      };
+
+      const kontakte = JSON.parse(localStorage.getItem("kontakte")) || [];
+      kontakte.push(eintrag);
+      localStorage.setItem("kontakte", JSON.stringify(kontakte));
+
+      document.getElementById("contactForm").reset();
+      document.getElementById("feedback").innerText = "Deine Nachricht wurde erfolgreich IC gesendet.";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Verwaltung – Los Santos Government</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <img src="assets/img/lspd-logo.png" alt="LSPD Logo" class="logo" />
+      <h1>LSPD - Los Santos Police Department</h1>
+      <button onclick="logout()" class="logout-btn">Logout</button>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="dienstvorschriften.html">Dienstvorschriften</a></li>
+        <li><a href="verordnung.html">verordnung</a></li>
+        <li><a href="funkcodes.html">Funkcodes</a></li>
+        <li><a href="rangstruktur.html">Rangstruktur</a></li>
+        <li><a href="verwaltung.html" class="active">Anfragen verwalten</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2>Eingegangene Kontaktanfragen</h2>
+    <ul id="anfragenListe"></ul>
+  </main>
+
+  <script>
+    function ladeAnfragen() {
+      const kontakte = JSON.parse(localStorage.getItem("kontakte")) || [];
+      const liste = document.getElementById("anfragenListe");
+      liste.innerHTML = "";
+
+      if (kontakte.length === 0) {
+        liste.innerHTML = "<li>Keine Anfragen vorhanden.</li>";
+        return;
+      }
+
+      kontakte.forEach((eintrag, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <strong>${eintrag.name}</strong> (${eintrag.datum})<br />
+          <em>${eintrag.betreff}</em><br />
+          ${eintrag.nachricht}<br />
+          <button onclick="abschliessen(${index})" class="btn-secondary">Abschließen</button>
+          <hr />
+        `;
+        liste.appendChild(li);
+      });
+    }
+
+    function abschliessen(index) {
+      const kontakte = JSON.parse(localStorage.getItem("kontakte")) || [];
+      kontakte.splice(index, 1);
+      localStorage.setItem("kontakte", JSON.stringify(kontakte));
+      ladeAnfragen();
+    }
+
+    ladeAnfragen();
+  </script>
+</body>
+</html>
