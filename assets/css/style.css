@@ -287,3 +287,51 @@ footer {
 .logout-btn:hover {
   background-color: #e74c3c;
 }
+/* Kontakt Formular */
+.kontakt-wrapper {
+  background: #fff;
+  padding: 2em;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  max-width: 600px;
+  margin: 2em auto;
+}
+
+.kontakt-formular label {
+  display: block;
+  margin-top: 1em;
+  font-weight: bold;
+}
+
+.kontakt-formular input,
+.kontakt-formular textarea {
+  width: 100%;
+  padding: 0.5em;
+  margin-top: 0.3em;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.feedback-text {
+  color: green;
+  font-weight: bold;
+  text-align: center;
+}
+
+.anfragen-wrapper {
+  max-width: 700px;
+  margin: 2em auto;
+}
+
+.anfragen-liste {
+  list-style: none;
+  padding: 0;
+}
+
+.anfrage-item {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 1em;
+  border-radius: 10px;
+  margin-bottom: 1em;
+}

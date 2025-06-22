@@ -24,33 +24,46 @@
   </header>
 
   <main class="container">
-    <h2>Schreibe eine Nachricht</h2>
-    <form id="contactForm">
-      <label for="name">Name (IC):</label>
-      <input type="text" id="name" required />
+    <section class="kontakt-wrapper">
+      <h2>Kontaktiere das Government von Los Santos</h2>
+      <p>Nutze dieses Formular, um IC-Anfragen, Hinweise oder Beschwerden direkt an das Government zu senden. Gib deinen Namen und deine Handynummer an, damit wir dich erreichen können.</p>
 
-      <label for="betreff">Betreff:</label>
-      <input type="text" id="betreff" required />
+      <form id="contactForm" class="kontakt-formular">
+        <label for="name">Name (IC):</label>
+        <input type="text" id="name" placeholder="Max Mustermann" required />
 
-      <label for="nachricht">Nachricht:</label>
-      <textarea id="nachricht" required></textarea>
+        <label for="nummer">Handynummer (IC):</label>
+        <input type="text" id="nummer" placeholder="z.B. 556-1234" required />
 
-      <button type="submit" class="btn-primary">Absenden</button>
-    </form>
+        <label for="betreff">Betreff:</label>
+        <input type="text" id="betreff" placeholder="Thema der Anfrage" required />
 
-    <p id="feedback" style="margin-top:1em;"></p>
+        <label for="nachricht">Nachricht:</label>
+        <textarea id="nachricht" placeholder="Schreibe hier deine Nachricht..." required></textarea>
+
+        <button type="submit" class="btn-primary">Absenden</button>
+      </form>
+
+      <p id="feedback" class="feedback-text"></p>
+    </section>
   </main>
+
+  <footer>
+    <p>&copy; 2025 Los Santos Government</p>
+  </footer>
 
   <script>
     document.getElementById("contactForm").addEventListener("submit", function (e) {
       e.preventDefault();
 
       const name = document.getElementById("name").value;
+      const nummer = document.getElementById("nummer").value;
       const betreff = document.getElementById("betreff").value;
       const nachricht = document.getElementById("nachricht").value;
 
       const eintrag = {
         name,
+        nummer,
         betreff,
         nachricht,
         datum: new Date().toLocaleString()

@@ -2,32 +2,24 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <title>Verwaltung – Los Santos Government</title>
+  <title>Verwaltung – IC Kontaktanfragen</title>
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
   <header>
-    <div class="header-container">
-      <img src="assets/img/lspd-logo.png" alt="LSPD Logo" class="logo" />
-      <h1>LSPD - Los Santos Police Department</h1>
-      <button onclick="logout()" class="logout-btn">Logout</button>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="dienstvorschriften.html">Dienstvorschriften</a></li>
-        <li><a href="verordnung.html">verordnung</a></li>
-        <li><a href="funkcodes.html">Funkcodes</a></li>
-        <li><a href="rangstruktur.html">Rangstruktur</a></li>
-        <li><a href="verwaltung.html" class="active">Anfragen verwalten</a></li>
-      </ul>
-    </nav>
+    <h1>IC-Verwaltung – Government Anfragen</h1>
   </header>
 
   <main class="container">
-    <h2>Eingegangene Kontaktanfragen</h2>
-    <ul id="anfragenListe"></ul>
+    <section class="anfragen-wrapper">
+      <h2>Alle eingegangenen Anfragen</h2>
+      <ul id="anfragenListe" class="anfragen-liste"></ul>
+    </section>
   </main>
+
+  <footer>
+    <p>&copy; 2025 Los Santos Government</p>
+  </footer>
 
   <script>
     function ladeAnfragen() {
@@ -42,12 +34,14 @@
 
       kontakte.forEach((eintrag, index) => {
         const li = document.createElement("li");
+        li.classList.add("anfrage-item");
         li.innerHTML = `
-          <strong>${eintrag.name}</strong> (${eintrag.datum})<br />
-          <em>${eintrag.betreff}</em><br />
-          ${eintrag.nachricht}<br />
+          <div><strong>Name:</strong> ${eintrag.name}</div>
+          <div><strong>Handynummer:</strong> ${eintrag.nummer}</div>
+          <div><strong>Betreff:</strong> ${eintrag.betreff}</div>
+          <div><strong>Nachricht:</strong><br />${eintrag.nachricht}</div>
+          <div><small>Gesendet am: ${eintrag.datum}</small></div>
           <button onclick="abschliessen(${index})" class="btn-secondary">Abschließen</button>
-          <hr />
         `;
         liste.appendChild(li);
       });
