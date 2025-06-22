@@ -27,13 +27,13 @@
   <main class="container">
     <section class="kontakt-wrapper">
       <h2>Kontaktiere das Government von Los Santos</h2>
-      <p>Nutze dieses Formular, um IC-Anfragen, Hinweise oder Beschwerden direkt an das Government zu senden. Gib deinen Namen und deine Handynummer an, damit wir dich erreichen können.</p>
+      <p>Nutze dieses Formular, um Anfragen, Hinweise oder Beschwerden direkt an das Government zu senden. Gib deinen Namen und deine Handynummer an, damit wir dich erreichen können.</p>
 
       <form id="contactForm" class="kontakt-formular">
-        <label for="name">Name (IC):</label>
+        <label for="name">Name:</label>
         <input type="text" id="name" placeholder="Max Mustermann" required />
 
-        <label for="nummer">Handynummer (IC):</label>
+        <label for="nummer">Handynummer:</label>
         <input type="text" id="nummer" placeholder="z.B. 556-1234" required />
 
         <label for="betreff">Betreff:</label>
@@ -75,7 +75,7 @@
       localStorage.setItem("kontakte", JSON.stringify(kontakte));
 
       document.getElementById("contactForm").reset();
-      document.getElementById("feedback").innerText = "Deine Nachricht wurde erfolgreich IC gesendet.";
+      document.getElementById("feedback").innerText = "Deine Nachricht wurde erfolgreich gesendet.";
     });
   </script>
 </body>
